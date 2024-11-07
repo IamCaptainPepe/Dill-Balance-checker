@@ -9,25 +9,28 @@ This script periodically checks the balance of validators by querying a specifie
 
 ## Setup and Usage
 
-1. **Edit Public Keys**:
+1. **Create a Directory for the Project**:
+   ```bash
+   mkdir dill_balance_checker && cd dill_balance_checker
+   ```
+
+2. **Edit Public Keys**:
    ```bash
    nano public_keys.txt
    ```
    Add each public key on a separate line (without the `0x` prefix).
 
-2. **Create a Screen Session**:
+3. **Create a Screen Session**:
    ```bash
    screen -S balance_checker
    ```
+ 
 
-
-3. **Download and Run Script in One Command**:
+4. **Download and Run Script in One Command**:
    ```bash
    wget https://github.com/IamCaptainPepe/Dill-Balance-checker/raw/main/balance_checker.sh && chmod +x balance_checker.sh && ./balance_checker.sh
    ```
-
-
-   To detach from the screen session, press `CTRL+A` followed by `D`. To reattach, use:
+  To detach from the screen session, press `CTRL+A` followed by `D`. To reattach, use:
    ```bash
    screen -r balance_checker
    ```
