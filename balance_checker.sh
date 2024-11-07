@@ -29,7 +29,7 @@ load_previous_balances() {
 save_current_balances() {
     declare -A balances=$1
     > "$PREVIOUS_BALANCES_FILE"
-    while IFS= read -r pubkey; do
+    while IFS= read -r pubkey || [ -n "$pubkey" ]; do
         pubkey="0x$pubkey"
         if [[ -v balances[$pubkey] ]]; then
             echo "$pubkey ${balances[$pubkey]}" >> "$PREVIOUS_BALANCES_FILE"
@@ -55,7 +55,7 @@ while true; do
     echo -e "\e[1;34mNext check at: $next_check_time\e[0m"
 
     # Compare balances and log the differences
-    while IFS= read -r pubkey; do
+    while IFS= read -r pubkey || [ -n "$pubkey" ]; do
         pubkey="0x$pubkey"
         if [[ -v current_balances[$pubkey] ]]; then
             if [[ -v previous_balances[$pubkey] ]]; then
